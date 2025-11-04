@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // === MUSIC FLAP TOGGLE ===
   const btn = document.querySelector('.flap-toggle');
   const musicArea = document.getElementById('music-area');
-  
+
   if (btn && musicArea) {
     btn.addEventListener('click', () => {
       const expanded = btn.getAttribute('aria-expanded') === 'true';
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
       el.style.position = 'fixed';
       el.style.left = (10 + Math.random() * 80) + 'vw';
       el.style.top = (20 + Math.random() * 60) + 'vh';
-      el.style.fontSize = (50 + Math.random() * 60) + 'px'; // big & random size
+      el.style.fontSize = (50 + Math.random() * 60) + 'px';
       el.style.opacity = '1';
       el.style.pointerEvents = 'none';
       el.style.transition = 'transform 2s ease-out, opacity 2s';
@@ -68,62 +68,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // === TEST BUTTONS (optional) ===
-  if (window.location.search.includes('test')) {
-    const wrap = document.createElement('div');
-    wrap.style.position = 'fixed';
-    wrap.style.right = '12px';
-    wrap.style.bottom = '12px';
-    wrap.style.display = 'flex';
-    wrap.style.flexDirection = 'column';
-    wrap.style.gap = '8px';
-    wrap.style.opacity = '0.85';
-    wrap.style.zIndex = 99999;
+  // === TURNTABLE SPINNING ===
+  const music = document.getElementById('music');
+  const record = document.querySelector('.record');
 
-    const makeBtn = (label, emojis) => {
-      const b = document.createElement('button');
-      b.textContent = label;
-      b.style.padding = '8px 12px';
-      b.style.borderRadius = '10px';
-      b.style.border = 'none';
-      b.style.background = '#7b5a36';
-      b.style.color = '#fff';
-      b.addEventListener('click', () => showEmojis(emojis, 8));
-      return b;
-    };
-
-    wrap.appendChild(makeBtn('Test R ❤️', ['❤️','💌','🌹','💫']));
-    wrap.appendChild(makeBtn('Test C 🤎', ['🤎','⭐️','💐','🌻']));
-    document.body.appendChild(wrap);
+  if (music && record) {
+    music.addEventListener('play', () => {
+      record.style.animationPlayState = 'running';
+    });
+    music.addEventListener('pause', () => {
+      record.style.animationPlayState = 'paused';
+    });
+    music.addEventListener('ended', () => {
+      record.style.animationPlayState = 'paused';
+    });
   }
 });
-// === Music Flap Toggle ===
-const flapButton = document.querySelector('.flap-toggle');
-const musicArea = document.getElementById('music-area');
-
-if (flapButton && musicArea) {
-  flapButton.addEventListener('click', () => {
-    const isHidden = musicArea.hasAttribute('hidden');
-    if (isHidden) {
-      musicArea.removeAttribute('hidden');
-      musicArea.classList.add('show');
-      flapButton.setAttribute('aria-expanded', 'true');
-    } else {
-      musicArea.setAttribute('hidden', '');
-      flapButton.setAttribute('aria-expanded', 'false');
-    }
-  });
-}
-
-const music = document.getElementById('music');
-const record = document.querySelector('.record');
-
-if (music && record) {
-  music.addEventListener('play', () => {
-    record.style.animationPlayState = 'running';
-  });
-
-  music.addEventListener('pause', () => {
-    record.style.animationPlayState = 'paused';
-  });
-}
