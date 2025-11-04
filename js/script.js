@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-<script>
+
 const music = document.getElementById('music');
 const record = document.querySelector('.record');
 
