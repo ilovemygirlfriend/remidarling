@@ -22,6 +22,62 @@
   --shadow: rgba(45, 33, 25, 0.12);
 }
 
+.preview {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.preview.show {
+  display: block;
+  opacity: 1;
+}
+
+.preview-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+  align-items: center;
+  margin-top: 1rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  background: #fffaf5;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 240px;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-text {
+  padding: 0.8rem;
+  font-size: 1rem;
+  color: #4a3a2a;
+  font-weight: 500;
+}
 /* === Reset === */
 * {
   box-sizing: border-box;
