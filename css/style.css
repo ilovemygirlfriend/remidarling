@@ -190,36 +190,37 @@ body {
 }
 
 
+/* --- Turntable container --- */
 .turntable {
-  position: static;
-}
-  bottom: -80px; /* half hidden at the bottom */
-  right: -80px;  /* half hidden at the side */
-  width: 300px;
-  height: 300px;
-  z-index: 60;
+  position: absolute;        /* keeps it anchored at the page bottom */
+  bottom: 20px;              /* distance from bottom */
+  right: 40px;               /* distance from right edge */
+  width: 240px;
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* --- Record (spinning vinyl) --- */
 .record {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
-
   background: repeating-radial-gradient(
     circle,
     #0a0a0a 0,
     #0a0a0a 1px,
     #000 2px
   );
-
-  box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.05),
-              inset 0 0 40px rgba(0, 0, 0, 0.5);
-
+  box-shadow:
+    inset 0 0 15px rgba(255,255,255,0.05),
+    inset 0 0 40px rgba(0,0,0,0.5);
   animation: spin 5s linear infinite;
-  overflow: hidden;
 }
 
+/* Center label (your existing pink label) */
 .record::before {
   content: "";
   position: absolute;
@@ -227,12 +228,13 @@ body {
   left: 50%;
   width: 36px;
   height: 36px;
-  background: #b03842;
+  background: #ff9eb5;
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 0 6px rgba(255,255,255,0.3);
 }
 
+/* Highlight reflection */
 .record::after {
   content: "";
   position: absolute;
@@ -245,10 +247,31 @@ body {
   pointer-events: none;
 }
 
+/* --- Hand --- */
+.hand {
+  position: absolute;
+  width: 100px;
+  height: 18px;
+  background: #d3b897;
+  border-radius: 10px;
+  top: 30px;
+  right: -40px;
+  transform-origin: top right;
+  transform: rotate(60deg);
+  transition: transform 1s ease;
+}
+
+/* When playing → hand moves inward */
+.turntable.playing .hand {
+  transform: rotate(25deg);
+}
+
+/* Spin animation */
 @keyframes spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
 
 .container {
     min-height: 100vh;    
