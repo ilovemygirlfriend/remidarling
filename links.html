@@ -6,6 +6,14 @@
   <title>tunes</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
+<script>
+  const turntable = document.querySelector('.turntable');
+  const record = document.querySelector('.record');
+
+  record.addEventListener('click', () => {
+    turntable.classList.toggle('playing');
+  });
+</script>
 
 <body class="paper-bg">
   <header class="nav small">
