@@ -85,11 +85,29 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-<script>
+window.addEventListener('DOMContentLoaded', () => {
   const turntable = document.querySelector('.turntable');
   const record = document.querySelector('.record');
 
   record.addEventListener('click', () => {
-    turntable.classList.toggle('playing');
+    // If it's not playing yet
+    if (!turntable.classList.contains('playing')) {
+      // Move the tonearm in
+      turntable.classList.add('playing');
+
+      // Start the record spinning slightly after the hand moves in
+      setTimeout(() => {
+        turntable.classList.add('spin');
+      }, 800);
+    } else {
+      // Stop spinning first
+      turntable.classList.remove('spin');
+
+      // Wait a bit, then move the hand back out
+      setTimeout(() => {
+        turntable.classList.remove('playing');
+      }, 500);
+    }
   });
-</script>
+});
+
