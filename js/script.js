@@ -87,15 +87,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 window.addEventListener('DOMContentLoaded', () => {
   const turntable = document.querySelector('.turntable');
-  const record = document.querySelector('.record');
+  const spotify = document.querySelector('.spotify-embed');
 
-  record.addEventListener('click', () => {
-    // If it's not playing yet
+  spotify.addEventListener('click', () => {
     if (!turntable.classList.contains('playing')) {
-      // Move the tonearm in
+      // Move hand in
       turntable.classList.add('playing');
 
-      // Start the record spinning slightly after the hand moves in
+      // Start spinning after short delay
       setTimeout(() => {
         turntable.classList.add('spin');
       }, 800);
@@ -103,11 +102,10 @@ window.addEventListener('DOMContentLoaded', () => {
       // Stop spinning first
       turntable.classList.remove('spin');
 
-      // Wait a bit, then move the hand back out
+      // Wait, then move hand out
       setTimeout(() => {
         turntable.classList.remove('playing');
       }, 500);
     }
   });
 });
-
