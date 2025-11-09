@@ -277,3 +277,18 @@ body.playing .star {
   .record { width: 150px; height: 150px; margin-right: 20px; }
   .hand { width: 100px; right: 10px; top: 30px; }
 }
+
+/* === Fix turntable position (bottom right, but scrolls with page) === */
+.turntable {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  width: 200px;
+  height: 200px;
+}
+
+/* Make sure its parent (body or html) can serve as positioning base */
+html, body {
+  position: relative;
+  min-height: 100%;
+}
