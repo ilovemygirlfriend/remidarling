@@ -272,3 +272,14 @@ body.playing .star {
   to { transform: rotate(360deg); }
 }
 
+@media (max-width: 600px) {
+  .nav-stickers {
+    top: 10px;
+    right: 10px;
+    gap: 8px;
+  }
+  .nav-stickers img {
+    width: 32px;
+  }
+}
+
